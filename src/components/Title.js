@@ -14,10 +14,14 @@ class Title extends Component {
 	}
 
 	animateTitle = () => {
-		setInterval(() => {
+		this.titleInterval = setInterval(() => {
 			const titleIndex = (this.state.titleIndex + 1) % TITLES.length;
 			this.setState({ titleIndex: titleIndex });
 		}, 4000);
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.titleInterval);
 	}
 
 	render() {
